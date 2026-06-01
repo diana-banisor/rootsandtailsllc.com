@@ -3,22 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Roots & Tails LLC — Rooted. Alive. Connected.</title>
   <meta name="description" content="A grounded lifestyle brand rooted in home, nature, creativity, and joy." />
+
   <link rel="icon" type="image/png" href="roundeditednobkgdlogo.png" />
+
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
   <style>
     :root {
-      --moss:      #293D2E;
-      --sage:      #7A8B79;
-      --clay:      #C27A5A;
-      --ivory:     #F4F1EA;
-      --ink:       #1E1E1E;
-      --cream:     #FAF8F3;
-      --warm-line: rgba(41,61,46,0.12);
+      --moss: #293D2E;
+      --sage: #7A8B79;
+      --clay: #C27A5A;
+      --ivory: #F4F1EA;
+      --ink: #1E1E1E;
+      --cream: #FAF8F3;
+      --warm-line: rgba(41, 61, 46, 0.12);
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
     body {
       background: var(--cream);
       color: var(--ink);
@@ -28,204 +42,561 @@
       min-width: 320px;
       width: 100%;
     }
-    html {
-      overflow-x: hidden;
-    }
+
     body::before {
       content: '';
-      position: fixed; inset: 0;
+      position: fixed;
+      inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 1000; opacity: 0.4;
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
     }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 0 48px;
-      height: 84px;
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgb(250,248,243);
-      border-bottom: 1px solid var(--warm-line);
-      overflow: hidden;
-    }
-    .nav-logo img { height: 44px; width: auto; max-height: 44px; }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a {
-      font-size: 11px; font-weight: 500;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--moss); text-decoration: none; transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--clay); }
 
     /* HERO */
     .hero {
       min-height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center; padding: 120px 24px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px;
       position: relative;
     }
+
     .hero::after {
-      content: ''; position: absolute; top: 30%; left: 50%;
+      content: '';
+      position: absolute;
+      top: 34%;
+      left: 50%;
       transform: translate(-50%, -50%);
-      width: 600px; height: 600px;
-      background: radial-gradient(ellipse, rgba(122,139,121,0.12) 0%, transparent 70%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(122, 139, 121, 0.12) 0%, transparent 70%);
       pointer-events: none;
     }
+
     .hero-eyebrow {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.28em;
-      text-transform: uppercase; color: var(--clay); margin-bottom: 40px;
-      opacity: 0; animation: fadeUp 0.8s ease forwards 0.1s;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.1s;
     }
+
     .hero-logo {
-      width: min(480px, 88vw); margin-bottom: 48px;
-      opacity: 0; animation: fadeUp 1s ease forwards 0.3s;
+      width: min(480px, 88vw);
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 0.3s;
+      position: relative;
+      z-index: 1;
     }
+
     .hero-tagline {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(13px, 2vw, 17px); font-style: italic;
-      color: var(--sage); letter-spacing: 0.04em; margin-bottom: 16px;
-      opacity: 0; animation: fadeUp 1s ease forwards 0.5s;
+      font-size: clamp(13px, 2vw, 17px);
+      font-style: italic;
+      color: var(--sage);
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 0.5s;
     }
+
     .hero-desc {
-      max-width: 520px; font-size: 15px; line-height: 1.8; color: var(--moss);
-      opacity: 0; animation: fadeUp 1s ease forwards 0.7s;
+      max-width: 520px;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--moss);
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 0.7s;
     }
+
     .scroll-cue {
-      margin-top: 64px; display: flex; flex-direction: column;
-      align-items: center; gap: 8px;
-      opacity: 0; animation: fadeUp 1s ease forwards 1s;
+      margin-top: 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 1s;
     }
-    .scroll-cue span { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sage); }
+
+    .scroll-cue span {
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sage);
+    }
+
     .scroll-line {
-      width: 1px; height: 40px;
+      width: 1px;
+      height: 40px;
       background: linear-gradient(to bottom, var(--sage), transparent);
       animation: pulse 2s ease-in-out infinite;
     }
 
     /* PHILOSOPHY STRIP */
     .philosophy {
-      border-top: 1px solid var(--warm-line); border-bottom: 1px solid var(--warm-line);
-      background: var(--moss); padding: 28px 48px;
-      display: flex; justify-content: center; gap: 56px; flex-wrap: wrap;
+      border-top: 1px solid var(--warm-line);
+      border-bottom: 1px solid var(--warm-line);
+      background: var(--moss);
+      padding: 28px 48px;
+      display: flex;
+      justify-content: center;
+      gap: 56px;
+      flex-wrap: wrap;
     }
-    .phil-item { display: flex; align-items: center; gap: 10px; color: var(--ivory); }
-    .phil-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--clay); flex-shrink: 0; }
-    .phil-item span { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.85; }
+
+    .phil-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ivory);
+    }
+
+    .phil-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--clay);
+      flex-shrink: 0;
+    }
+
+    .phil-item span {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
 
     /* SECTIONS */
-    section { padding: 96px 48px; }
-    .section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: var(--clay); margin-bottom: 16px; }
-    .section-heading { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 44px); font-weight: 500; color: var(--moss); line-height: 1.2; margin-bottom: 20px; }
-    .section-body { font-size: 15px; line-height: 1.85; color: #4a4a3a; max-width: 560px; }
+    section {
+      padding: 96px 48px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 16px;
+    }
+
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 500;
+      color: var(--moss);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .section-body {
+      font-size: 15px;
+      line-height: 1.85;
+      color: #4a4a3a;
+      max-width: 560px;
+    }
 
     /* ABOUT */
-    .about { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1100px; margin: 0 auto; }
-    .about-visual { display: flex; justify-content: center; align-items: center; }
-    .about-icon { width: min(420px, 80vw); }
-    .about-values { margin-top: 36px; display: flex; flex-wrap: wrap; align-items: center; row-gap: 12px; }
-    .value-word { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--moss); white-space: nowrap; }
-    .value-sep { width: 4px; height: 4px; border-radius: 50%; background: var(--clay); margin: 0 14px; flex-shrink: 0; }
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .about-icon {
+      width: min(420px, 80vw);
+    }
+
+    .about-values {
+      margin-top: 36px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      row-gap: 12px;
+    }
+
+    .value-word {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--moss);
+      white-space: nowrap;
+    }
+
+    .value-sep {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--clay);
+      margin: 0 14px;
+      flex-shrink: 0;
+    }
 
     /* VENTURES */
-    .ventures-section { background: var(--ivory); border-top: 1px solid var(--warm-line); }
-    .ventures-inner { max-width: 1100px; margin: 0 auto; }
-    .ventures-intro { text-align: center; margin-bottom: 72px; }
-    .ventures-intro .section-body { margin: 0 auto; }
-    .ventures-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+    .ventures-section {
+      background: var(--ivory);
+      border-top: 1px solid var(--warm-line);
+    }
+
+    .ventures-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .ventures-intro {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .ventures-intro .section-body {
+      margin: 0 auto;
+    }
+
+    .ventures-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
 
     .venture-card {
-      background: var(--cream); border: 1px solid var(--warm-line); border-radius: 4px;
-      padding: 48px 40px; display: flex; flex-direction: column; gap: 20px;
+      background: var(--cream);
+      border: 1px solid var(--warm-line);
+      border-radius: 4px;
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-decoration: none; color: inherit;
+      text-decoration: none;
+      color: inherit;
     }
-    .venture-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(41,61,46,0.08); }
-    .venture-type { font-size: 9px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--clay); }
-    .venture-name { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 500; color: var(--moss); line-height: 1.2; }
-    .venture-desc { font-size: 14px; line-height: 1.75; color: #5a5a4a; flex: 1; }
+
+    .venture-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(41, 61, 46, 0.08);
+    }
+
+    .venture-type {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--clay);
+    }
+
+    .venture-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--moss);
+      line-height: 1.2;
+    }
+
+    .venture-desc {
+      font-size: 14px;
+      line-height: 1.75;
+      color: #5a5a4a;
+      flex: 1;
+    }
+
     .venture-link {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--moss); margin-top: 8px; transition: gap 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--moss);
+      margin-top: 8px;
+      transition: gap 0.2s;
     }
-    .venture-card:hover .venture-link { gap: 12px; }
-    .venture-link::after { content: '→'; font-size: 13px; }
 
-    .venture-card.coming-soon { border-style: dashed; background: transparent; opacity: 0.6; pointer-events: none; }
-    .venture-icon-placeholder { width: 56px; height: 56px; border: 1.5px dashed var(--sage); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-    .venture-icon-placeholder span { font-size: 22px; }
+    .venture-card:hover .venture-link {
+      gap: 12px;
+    }
 
-    /* Shared logo-wrap for both cards */
-    .card-logo-wrap { display: flex; align-items: center; gap: 14px; }
-    .card-logo-img { width: 52px; height: 52px; border-radius: 12px; object-fit: cover; }
-    .card-logo-text { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 500; letter-spacing: 0.02em; }
+    .venture-link::after {
+      content: '→';
+      font-size: 13px;
+    }
 
-    /* Proof — light */
-    .card-logo-text.proof { color: var(--moss); }
+    .venture-card.coming-soon {
+      border-style: dashed;
+      background: transparent;
+      opacity: 0.6;
+      pointer-events: none;
+    }
 
-    /* Sour Deesires — dark */
-    .venture-card.sd-card { background: var(--moss); border-color: transparent; }
-    .venture-card.sd-card .venture-type { color: var(--clay); }
-    .venture-card.sd-card .venture-name { color: var(--ivory); }
-    .venture-card.sd-card .venture-desc { color: rgba(244,241,234,0.7); }
-    .venture-card.sd-card .venture-link { color: var(--ivory); }
-    .card-logo-text.sd { color: var(--ivory); }
+    .venture-icon-placeholder {
+      width: 56px;
+      height: 56px;
+      border: 1.5px dashed var(--sage);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .venture-icon-placeholder span {
+      font-size: 22px;
+    }
+
+    .card-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .card-logo-img {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .card-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .card-logo-text.proof {
+      color: var(--moss);
+    }
+
+    .venture-card.sd-card {
+      background: var(--moss);
+      border-color: transparent;
+    }
+
+    .venture-card.sd-card .venture-type {
+      color: var(--clay);
+    }
+
+    .venture-card.sd-card .venture-name {
+      color: var(--ivory);
+    }
+
+    .venture-card.sd-card .venture-desc {
+      color: rgba(244, 241, 234, 0.7);
+    }
+
+    .venture-card.sd-card .venture-link {
+      color: var(--ivory);
+    }
+
+    .card-logo-text.sd {
+      color: var(--ivory);
+    }
 
     /* MANIFESTO */
-    .manifesto-section { background: var(--moss); text-align: center; padding: 120px 48px; }
-    .manifesto-section .section-label { color: var(--clay); }
-    .manifesto-quote { font-family: 'Playfair Display', serif; font-size: clamp(22px, 4vw, 40px); font-weight: 400; font-style: italic; color: var(--ivory); line-height: 1.5; max-width: 800px; margin: 0 auto 24px; }
-    .manifesto-attr { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage); }
+    .manifesto-section {
+      background: var(--moss);
+      text-align: center;
+      padding: 120px 48px;
+    }
+
+    .manifesto-section .section-label {
+      color: var(--clay);
+    }
+
+    .manifesto-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 4vw, 40px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ivory);
+      line-height: 1.5;
+      max-width: 800px;
+      margin: 0 auto 24px;
+    }
+
+    .manifesto-attr {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+    }
 
     /* CONNECT */
-    .connect-section { text-align: center; max-width: 600px; margin: 0 auto; }
-    .connect-links { margin-top: 40px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-    .connect-btn { display: inline-block; padding: 14px 32px; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: all 0.2s; }
-    .connect-btn.primary { background: var(--moss); color: var(--ivory); }
-    .connect-btn.primary:hover { background: #1e2e20; }
+    .connect-section {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .connect-links {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .connect-btn {
+      display: inline-block;
+      padding: 14px 32px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
+    .connect-btn.primary {
+      background: var(--moss);
+      color: var(--ivory);
+    }
+
+    .connect-btn.primary:hover {
+      background: #1e2e20;
+    }
 
     /* FOOTER */
-    footer { border-top: 1px solid var(--warm-line); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; height: 84px; flex-wrap: wrap; gap: 20px; }
-    footer img { height: 32px; width: auto; opacity: 0.6; }
-    .footer-copy { font-size: 11px; color: var(--sage); letter-spacing: 0.06em; }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); text-decoration: none; }
-    .footer-links a:hover { color: var(--moss); }
+    footer {
+      border-top: 1px solid var(--warm-line);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 84px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
 
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
+    footer img {
+      height: 32px;
+      width: auto;
+      opacity: 0.6;
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      color: var(--sage);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--moss);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
 
     @media (max-width: 768px) {
-      nav { padding: 16px 24px; }
-      .nav-links { display: none; }
-      section { padding: 64px 24px; }
-      .about { grid-template-columns: 1fr; gap: 40px; }
-      .about-visual { order: -1; }
-      footer { flex-direction: column; text-align: center; }
-      .philosophy { gap: 24px; padding: 24px; }
-      .manifesto-section { padding: 80px 24px; }
+      section {
+        padding: 64px 24px;
+      }
+
+      .hero {
+        padding: 64px 24px;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-visual {
+        order: -1;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .philosophy {
+        gap: 24px;
+        padding: 24px;
+      }
+
+      .manifesto-section {
+        padding: 80px 24px;
+      }
     }
   </style>
 </head>
-<body>
 
-  <nav>
-    <a class="nav-logo" href="#"><img src="horizontalnobkgdlogo.png" alt="Roots & Tails LLC" /></a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#ventures">Our Work</a></li>
-      <li><a href="#connect">Connect</a></li>
-    </ul>
-  </nav>
+<body>
 
   <section class="hero">
     <p class="hero-eyebrow">Roots &amp; Tails LLC</p>
+
     <img class="hero-logo" src="verticalnobkgdlogo.png" alt="Roots & Tails LLC" />
+
     <p class="hero-tagline">A grounded lifestyle brand</p>
-    <p class="hero-desc">We cultivate a life rooted in nature, nourished by creativity, and connected to all living things — from the soil to the table, the garden to the home, the wild to the heart.</p>
+
+    <p class="hero-desc">
+      We cultivate a life rooted in nature, nourished by creativity, and connected to all living things — from the soil to the table, the garden to the home, the wild to the heart.
+    </p>
+
     <div class="scroll-cue">
       <span>Explore</span>
       <div class="scroll-line"></div>
@@ -233,78 +604,139 @@
   </section>
 
   <div class="philosophy">
-    <div class="phil-item"><div class="phil-dot"></div><span>Home &amp; Hearth</span></div>
-    <div class="phil-item"><div class="phil-dot"></div><span>Horticulture</span></div>
-    <div class="phil-item"><div class="phil-dot"></div><span>Holistic Living</span></div>
-    <div class="phil-item"><div class="phil-dot"></div><span>Animal Love</span></div>
-    <div class="phil-item"><div class="phil-dot"></div><span>Creativity &amp; Joy</span></div>
-    <div class="phil-item"><div class="phil-dot"></div><span>Conscious Community</span></div>
+    <div class="phil-item">
+      <div class="phil-dot"></div>
+      <span>Home &amp; Hearth</span>
+    </div>
+
+    <div class="phil-item">
+      <div class="phil-dot"></div>
+      <span>Horticulture</span>
+    </div>
+
+    <div class="phil-item">
+      <div class="phil-dot"></div>
+      <span>Holistic Living</span>
+    </div>
+
+    <div class="phil-item">
+      <div class="phil-dot"></div>
+      <span>Animal Love</span>
+    </div>
+
+    <div class="phil-item">
+      <div class="phil-dot"></div>
+      <span>Creativity &amp; Joy</span>
+    </div>
+
+    <div class="phil-item">
+      <div class="phil-dot"></div>
+      <span>Conscious Community</span>
+    </div>
   </div>
 
   <section id="about">
     <div class="about">
+
       <div class="about-visual reveal">
         <img class="about-icon" src="noframenobkgdlogo.png" alt="Roots & Tails mark" />
       </div>
+
       <div class="reveal">
         <p class="section-label">Our Story</p>
+
         <h2 class="section-heading">Where roots anchor and tails roam free</h2>
+
         <p class="section-body">
           We believe in a life slow enough to notice things — the way bread smells when it's proofing, the way a plant leans toward light, the way an animal reminds you to be present.
           <br /><br />
           Roots &amp; Tails is the home for everything we build with that spirit. Each venture is small, intentional, and made with love — for people who want to live a little more grounded.
         </p>
+
         <div class="about-values">
-          <span class="value-word">Slow Living</span><div class="value-sep"></div>
-          <span class="value-word">From Scratch</span><div class="value-sep"></div>
-          <span class="value-word">Plant-Forward</span><div class="value-sep"></div>
-          <span class="value-word">Pet-Centered</span><div class="value-sep"></div>
-          <span class="value-word">Handmade</span><div class="value-sep"></div>
+          <span class="value-word">Slow Living</span>
+          <div class="value-sep"></div>
+
+          <span class="value-word">From Scratch</span>
+          <div class="value-sep"></div>
+
+          <span class="value-word">Plant-Forward</span>
+          <div class="value-sep"></div>
+
+          <span class="value-word">Pet-Centered</span>
+          <div class="value-sep"></div>
+
+          <span class="value-word">Handmade</span>
+          <div class="value-sep"></div>
+
           <span class="value-word">Grounded Joy</span>
         </div>
       </div>
+
     </div>
   </section>
 
   <section id="ventures" class="ventures-section">
     <div class="ventures-inner">
+
       <div class="ventures-intro reveal">
         <p class="section-label">Our Ventures</p>
+
         <h2 class="section-heading">Things we make &amp; build</h2>
-        <p class="section-body">Each project under Roots &amp; Tails grows from the same seed — thoughtful, handcrafted, and deeply human.</p>
+
+        <p class="section-body">
+          Each project under Roots &amp; Tails grows from the same seed — thoughtful, handcrafted, and deeply human.
+        </p>
       </div>
+
       <div class="ventures-grid">
 
-        <!-- Proof -->
         <a class="venture-card reveal" href="https://theproofapp.com" target="_blank" rel="noopener">
           <div class="card-logo-wrap">
             <img class="card-logo-img" src="Proof_icon.png" alt="Proof app icon" />
             <span class="card-logo-text proof">Proof</span>
           </div>
+
           <p class="venture-type">iOS App</p>
+
           <p class="venture-name">The Sourdough Baker's Companion</p>
-          <p class="venture-desc">Track your starter, time your ferments, and bake with confidence. Built for bakers who care about the craft — from first feed to final score.</p>
+
+          <p class="venture-desc">
+            Track your starter, time your ferments, and bake with confidence. Built for bakers who care about the craft — from first feed to final score.
+          </p>
+
           <span class="venture-link">Visit theproofapp.com</span>
         </a>
 
-        <!-- Sour Deesires -->
         <a class="venture-card sd-card reveal" href="https://www.instagram.com/sourdeesires" target="_blank" rel="noopener">
           <div class="card-logo-wrap">
             <img class="card-logo-img" src="SD_app_icon.png" alt="Sour Deesires" />
             <span class="card-logo-text sd">Sour Deesires</span>
           </div>
+
           <p class="venture-type">Artisan Micro Bakery</p>
+
           <p class="venture-name">Baked Slow, Made with Soul</p>
-          <p class="venture-desc">Sourdough is the heart of it, everything else is the joy — made from scratch with whole, clean ingredients and real love. Small batches, big flavor, zero shortcuts.</p>
+
+          <p class="venture-desc">
+            Sourdough is the heart of it, everything else is the joy — made from scratch with whole, clean ingredients and real love. Small batches, big flavor, zero shortcuts.
+          </p>
+
           <span class="venture-link">Follow on Instagram</span>
         </a>
 
-        <!-- Coming Soon -->
         <div class="venture-card coming-soon reveal">
-          <div class="venture-icon-placeholder"><span>🌱</span></div>
+          <div class="venture-icon-placeholder">
+            <span>🌱</span>
+          </div>
+
           <p class="venture-type">Coming Soon</p>
+
           <p class="venture-name">Something is growing...</p>
-          <p class="venture-desc">The next chapter of Roots &amp; Tails is taking root. Stay connected for what's next — something grounded, joyful, and deeply intentional.</p>
+
+          <p class="venture-desc">
+            The next chapter of Roots &amp; Tails is taking root. Stay connected for what's next — something grounded, joyful, and deeply intentional.
+          </p>
         </div>
 
       </div>
@@ -313,32 +745,46 @@
 
   <section class="manifesto-section">
     <p class="section-label">Our Belief</p>
-    <p class="manifesto-quote">"Rooted in nature. Alive in purpose. Connected to all things."</p>
+
+    <p class="manifesto-quote">
+      “Rooted in nature. Alive in purpose. Connected to all things.”
+    </p>
+
     <p class="manifesto-attr">— Roots &amp; Tails LLC</p>
   </section>
 
   <section id="connect">
     <div class="connect-section reveal">
       <p class="section-label">Stay Connected</p>
+
       <h2 class="section-heading">Grow with us</h2>
-      <p class="section-body" style="margin:0 auto;">Follow along as we build, bake, grow, and create. We're just getting started.</p>
+
+      <p class="section-body" style="margin: 0 auto;">
+        Follow along as we build, bake, grow, and create. We're just getting started.
+      </p>
+
       <div class="connect-links">
-        <a class="connect-btn primary" href="https://www.instagram.com/rootsandtailsllc" target="_blank" rel="noopener">Follow on Instagram</a>
+        <a class="connect-btn primary" href="https://www.instagram.com/rootsandtailsllc" target="_blank" rel="noopener">
+          Follow on Instagram
+        </a>
       </div>
     </div>
   </section>
 
   <footer>
     <img src="horizontalnobkgdlogo.png" alt="Roots & Tails LLC" />
+
     <p class="footer-copy">© 2026 Roots &amp; Tails LLC</p>
-    <nav class="footer-links">
-      <a href="https://www.instagram.com/rootsandtailsllc" target="_blank">Instagram</a>
-      <a href="https://theproofapp.com" target="_blank">Proof</a>
-    </nav>
+
+    <div class="footer-links">
+      <a href="https://www.instagram.com/rootsandtailsllc" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://theproofapp.com" target="_blank" rel="noopener">Proof</a>
+    </div>
   </footer>
 
   <script>
     const reveals = document.querySelectorAll('.reveal');
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
@@ -347,6 +793,7 @@
         }
       });
     }, { threshold: 0.1 });
+
     reveals.forEach(el => observer.observe(el));
   </script>
 
